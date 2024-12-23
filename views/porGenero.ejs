@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canciones por Género</title>
+</head>
+<body>
+  <h1>Canciones del género: <%= genero %></h1>
+  
+  <% if (canciones.length > 0) { %>
+    <ul>
+      <% canciones.forEach(cancion => { %>
+        <li><a href="/cancion/<%= cancion.id %>"><%= cancion.nombre %></a></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No hay canciones disponibles en este género.</p>
+  <% } %>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ exports.listadoBandas = (req, res) => {
 
 // Método para mostrar detalles de una banda específica por ID
 exports.detalleBanda = (req, res) => {
-    const banda = db.find(b => b.id === parseInt(req.params.id));
+    const banda = db.bandas.lista.find(b => b.id === parseInt(req.params.id));
     if (banda) {
         res.render('detalleBanda', { banda });
     } else {

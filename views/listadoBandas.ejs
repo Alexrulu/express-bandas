@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Listado de Bandas</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  
+  <main>
+    <h1>Listado de Bandas</h1>
+    <ul>
+      <% bandas.forEach(banda => { %>
+        <li class="banda">
+          <img src="<%= banda.cover %>" alt="Imagen de <%= banda.nombre %>">
+          <a href="/bandas/<%= banda.id %>"><%= banda.nombre %></a>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Banda</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div class="detalle-banda">
+    <h1><%= banda.nombre %></h1>
+    <img src="<%= banda.cover %>" alt="Imagen de <%= banda.nombre %>">
+    <p><strong>Género:</strong>
+      <a href="/bandas/genero/<%= banda.genero.toLowerCase() %>"><%= banda.genero %></a>
+    </p>
+    <p><strong>Cantidad de Integrantes:</strong> <%= banda.integrantes %></p>
+    <p><strong>Sus mejores canciones:</strong></p>
+    <ul>
+      <% banda.topCanciones.forEach(cancion => { %>
+        <li><%= cancion %></li>
+      <% }) %>
+    </ul>
+  </div>
+  <a class="atras-button" href="/bandas"><p>ATRÁS</p></a>
+</body>
+</html>
