@@ -22,19 +22,15 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// Ruta para bandas por género
+// Ruta para mostrar bandas por género
 router.get('/genero/:genero', (req, res) => {
-  const genero = req.params.genero.toLowerCase();
-  const bandasPorGenero = bandas.lista.filter(b => b.genero.toLowerCase() === genero);
+  const genero = req.params.genero;
+  const bandasPorGenero = bandas.lista.filter(banda => banda.genero.toLowerCase() === genero.toLowerCase());
 
-  if (bandasPorGenero.length > 0) {
-    res.render('listadoBandas', { bandas: bandasPorGenero });
-  } else {
-    res.status(404).render('error', {
-      message: 'No se encontraron bandas para este género',
-      error: { status: 404, stack: '' },
-    });
-  }
+  res.render('porGenero', {
+      genero, // Pasamos el género
+      bandas: { lista: bandasPorGenero } // Filtramos las bandas por género
+  });
 });
 
 module.exports = router;

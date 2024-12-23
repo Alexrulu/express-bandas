@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canciones por Género</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandas por Género</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <h1>Canciones del género: <%= genero %></h1>
-  
-  <% if (canciones.length > 0) { %>
-    <ul>
-      <% canciones.forEach(cancion => { %>
-        <li><a href="/cancion/<%= cancion.id %>"><%= cancion.nombre %></a></li>
-      <% }) %>
-    </ul>
-  <% } else { %>
-    <p>No hay canciones disponibles en este género.</p>
-  <% } %>
-
+    <h1>Bandas del género: <%= genero %></h1>
+    
+    <% if (bandas.lista.length > 0) { %>
+        <ul>
+            <% bandas.lista.forEach(banda => { %>
+                <li>
+                    <h2><%= banda.nombre %></h2>
+                    <img class="porGenero-img" src="<%= banda.cover %>" alt="<%= banda.nombre %>">
+                    <p class="porGenero-p">Top Canciones: <%= banda.topCanciones.join(', ') %></p>
+                    <a class="ver-video" href="<%= banda.video %>" target="_blank">Ver Video</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No hay bandas disponibles para este género.</p>
+    <% } %>
+    <a class="inicio-button" href="/bandas"><p>INICIO</p></a>
 </body>
 </html>
